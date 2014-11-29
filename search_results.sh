@@ -3,7 +3,7 @@ OUTDIR=$2
 SEARCH_URL="https://archive.org/search.php?query=subject:\"$CATEGORY\" AND mediatype:movies"
 echo "OUTDIR: $OUTDIR"
 cd $OUTDIR
-for i in $(seq 1 20);
+for i in $(seq 1 1);
 do
   echo "$CATEGORY PAGE $i"
   wget -q "$SEARCH_URL&page=$i" -O - | \
@@ -15,5 +15,5 @@ do
      grep "mp4" | \
      cut -d'"' -f4 | \
      grep "archive.org" | \
-     xargs -I{} wget -nc {}
+     xargs -I{} wget -nv -nc {}
 done

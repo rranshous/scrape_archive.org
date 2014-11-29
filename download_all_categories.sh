@@ -1,2 +1,4 @@
 OUTDIR=$1
-cat categories.txt | xargs -I{} ./search_results.sh "{}" "$OUTDIR"
+echo "OUTDIR: $OUTDIR"
+cat categories.txt | xargs -I{} mkdir -p "$OUTDIR/{}"
+cat categories.txt | xargs -I{} ./search_results.sh "{}" "$OUTDIR/{}"
